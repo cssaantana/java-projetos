@@ -46,7 +46,6 @@ public class AtvGrafo1{
         grafo.adicionarAresta("D", "E");
         grafo.adicionarAresta("E", "A");
 
-        grafo.mostrarGrafo();
-
+        grafo.mostrarGrafo()
     }
 }
