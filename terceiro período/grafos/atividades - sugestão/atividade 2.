@@ -1,0 +1,44 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+class Grafo {
+    private Map<String, List<String>> grafo;
+
+    public Grafo() {
+        grafo = new HashMap<>();
+    }
+
+    public void adicionarVertice(String vertice) {
+        if (!grafo.containsKey(vertice)) {
+            grafo.put(vertice, new ArrayList<>());
+        }
+    }
+
+    public void adicionarAresta(String origem, String destino) {
+        if (grafo.containsKey(origem) && grafo.containsKey(destino)) {
+            grafo.get(origem).add(destino);
+            grafo.get(destino).add(origem);
+        }
+    }
+
+    public void mostrarGrafo() {
+        for (String chave : grafo.keySet()) {
+            System.out.println(chave + "->" + grafo.get(chave));
+        }
+    }
+}
+
+public class AtvGrafo2 {
+    public static void main(String[] args) {
+        Grafo grafo = new Grafo();
+
+        grafo.adicionarVertice("A");
+        grafo.adicionarVertice("B");
+
+        grafo.adicionarAresta("A", "B");
+
+        grafo.mostrarGrafo();
+    }
+}
