@@ -63,9 +63,9 @@ public class AtvGrafo4 {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Sistema de Ligacao.");
         System.out.println("Digite o vertice de origem: ");
-        String origem = scanner.nextLine().toUpperCase();
+        String origem = scanner.nextLine();
         System.out.println("Digite o vertice de destino: ");
-        String destino = scanner.nextLine().toUpperCase();
+        String destino = scanner.nextLine();
 
         grafo.verificarLigacao(origem, destino);
 
