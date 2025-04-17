@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Mao;
+import java.util.Map;
 
 class Grafo {
     private Map<String, List<String>> grafo;
