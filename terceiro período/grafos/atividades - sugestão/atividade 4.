@@ -23,26 +23,24 @@ class Grafo {
         }
     }
 
-    public void verificarLigacao(String origem, String destino) {
-        String origemReal = null;
-        String destinoReal = null;
+    public void verificarLigacao() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Digite o vertice de origem:");
+        String origem = sc.nextLine().toUpperCase();
+        System.out.println("Digite o vertice de destino:");
+        String destino = sc.nextLine().toUpperCase();
 
-        for (String v : grafo.keySet()) {
-            if(v.equalsIgnoreCase(origem.trim())) origemReal = v;
-            if(v.equalsIgnoreCase(destino.trim())) destinoReal = v;
-        }
-
-        if(origemReal == null|| destinoReal == null) {
-            System.out.println("Um ou ambos os vertices nao tem ligacao.");
+        if(!grafo.containsKey(origem) || !grafo.containsKey(destino)) {
+            System.out.println("Origem/Destino nao existe.");
             return;
-        } 
-
-        if(grafo.get(origemReal).contains(destinoReal)) {
-            System.out.println("Existe ligacao: " + origemReal + " -> " + destinoReal);
-        } else {
-            System.out.println("Nao existe ligacao entre " + origemReal + " e " + destinoReal);
         }
-    }
+
+        if(grafo.get(origem).contains(destino)) {
+            System.out.println("Existe ligacao: " + origem + " -> " + destino);
+        } else {
+            System.out.println("Nao existe ligacao entre " + origem + " e " + destino);
+        }
+    } 
 }
 
 public class AtvGrafo4 {
@@ -60,14 +58,6 @@ public class AtvGrafo4 {
         grafo.adicionarAresta("C", "D");
         grafo.adicionarAresta("D", "A");
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Sistema de Ligacao.");
-        System.out.println("Digite o vertice de origem: ");
-        String origem = scanner.nextLine();
-        System.out.println("Digite o vertice de destino: ");
-        String destino = scanner.nextLine();
-
-        grafo.verificarLigacao(origem, destino);
-
+        grafo.verificarLigacao();
     }
 }
