@@ -23,7 +23,12 @@ class Grafo {
         } 
     }
 
-    public void mostrarGrafo(String vertice) {
+    public void mostrarVizinhos() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Sistema de Mostrar Vizinhos");
+        System.out.println("Digite o vertice:");
+        String vertice = scanner.nextLine().toUpperCase();
+
         if (grafo.containsKey(vertice)) {
             List<String> vizinhos = grafo.get(vertice);
             System.out.println(vertice + " -> " + vizinhos);
@@ -45,11 +50,6 @@ public class AtvGrafo3 {
         grafo.adicionarAresta("C", "B");
         grafo.adicionarAresta("B", "A");
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Sistema de Mostrar Vizinhos");
-        System.out.println("Digite o vertice:");
-        String entrada = scanner.nextLine().toUpperCase();
-
-        grafo.mostrarGrafo(entrada);
+        grafo.mostrarVizinhos();
     }
 }
