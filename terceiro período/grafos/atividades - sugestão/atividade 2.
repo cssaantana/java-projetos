@@ -19,7 +19,16 @@ class Grafo {
     public void adicionarAresta(String origem, String destino) {
         if (grafo.containsKey(origem) && grafo.containsKey(destino)) {
             grafo.get(origem).add(destino);
-            grafo.get(destino).add(origem);
+        }
+    }
+
+    public void naoDirecionado() {
+        for(String origem : grafo.keySet()) {
+            for(String destino : grafo.get(origem)) {
+                if (!grafo.get(destino).contains(origem)) {
+                    grafo.get(destino).add(origem);
+                }
+            }
         }
     }
 
@@ -39,6 +48,8 @@ public class AtvGrafo2 {
 
         grafo.adicionarAresta("A", "B");
 
+        grafo.mostrarGrafo();
+        grafo.naoDirecionado();
         grafo.mostrarGrafo();
     }
 }
