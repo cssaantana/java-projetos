@@ -23,29 +23,22 @@ class Grafo {
         }
     }
 
-    public void removerVertice(String nomeVertice) {
-        String verticeReal = null;
+    public void removerVertice() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Digite o vertice para remocao:");
+        String vertice = sc.nextLine();
 
-        for (String v : grafo.keySet()) {
-            if (v.equalsIgnoreCase(nomeVertice.trim())) {
-                verticeReal = v;
-                break;
-            }
-        }
-
-        if (verticeReal == null) {
-            System.out.println(nomeVertice + " não foi encontrado.");
+        if(!grafo.containsKey(vertice)) {
+            System.out.println("vertice nao encontrado.");
             return;
         }
 
-        grafo.remove(verticeReal);
-
-        final String finalVerticeReal = verticeReal;
-        for (List<String> vizinhos : grafo.values()) {
-            vizinhos.removeIf(v -> v.equalsIgnoreCase(finalVerticeReal));
+        for(List<String> vizinhos : grafo.values()) {
+            vizinhos.remove(vertice);
         }
 
-        System.out.println(verticeReal + " removido.");
+        grafo.remove(vertice);
+        System.out.println(vertice + " removido.");
     }
 
     public void mostrarGrafo() {
@@ -70,19 +63,8 @@ public class AtvGrafo5 {
         grafo.adicionarAresta("C", "D");
         grafo.adicionarAresta("D", "A");
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Sistema de Remocao de Vertices");
-
-        System.out.println("\nAntes da remocao:");
         grafo.mostrarGrafo();
-
-        System.out.print("\nDigite o vertice a ser removido: ");
-        String nomeVertice = scanner.nextLine();
-
-        grafo.removerVertice(nomeVertice);
-
-        System.out.println("\nDepois da remocao:");
+        grafo.removerVertice();
         grafo.mostrarGrafo();
-        scanner.close();
     }
 }
